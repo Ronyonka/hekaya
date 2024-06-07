@@ -32,6 +32,7 @@ yarn-error.log*
 
 # Backend
 src/backend/node_modules/
+src/frontend/node_modules/
 
 # macOS
 .AppleDouble
