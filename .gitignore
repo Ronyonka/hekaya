@@ -33,6 +33,9 @@ yarn-error.log*
 # Backend
 src/backend/node_modules/
 
+# Frontend
+src/frontend/node_modules/
+
 # macOS
 .AppleDouble
 .LSOverride
