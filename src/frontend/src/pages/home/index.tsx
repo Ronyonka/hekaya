@@ -1,9 +1,33 @@
 import React from 'react';
+import { useQuery, gql } from '@apollo/client';
 
-const Home = () => {
-    return(
-        <div>Home <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis facere, asperiores maiores quod atque necessitatibus placeat impedit ducimus nam quibusdam eaque id laboriosam, tempora eius error, culpa eligendi vero sapiente!</p></div>
-    )
-}
+const GET_BOOKS = gql`
+  query Books {
+    books {
+      title
+      author
+      coverPhotoURL
+    }
+  }
+`;
+
+const Home: React.FC = () => {
+  const { loading, error, data } = useQuery(GET_BOOKS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <div>
+      {data.books.map((book: any) => (
+        <div key={book.title}>
+          <img src={'../../../'+ book.coverPhotoURL} alt={book.title} style={{ width: 50, height: 50 }} />
+          <p>{book.title}</p>
+          <p>{book.author}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Home;
