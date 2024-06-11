@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     <div>
       {data.books.map((book: any) => (
         <div key={book.title}>
-          <img src={'../../../'+ book.coverPhotoURL} alt={book.title} style={{ width: 50, height: 50 }} />
+          <img src={process.env.PUBLIC_URL + book.coverPhotoURL} alt={book.title} style={{ width: 50, height: 50 }} />
           <p>{book.title}</p>
           <p>{book.author}</p>
         </div>

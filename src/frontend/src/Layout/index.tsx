@@ -2,6 +2,7 @@ import React from "react";
 import { ReactNode } from "react";
 import { Box } from "@mui/system";
 import { div$html } from "../prefabs/HTML";
+import SideBar from "../components/sidebar";
 
 interface LayoutProps {
     children: ReactNode
@@ -9,19 +10,20 @@ interface LayoutProps {
 
 const Layout = ({children}: LayoutProps) =>{
     return <Box sx={{
-        backgroundColor: "#5ACCCC",
+        backgroundColor: "#FFFFFF",
         display: "flex",
         flexDirection:{
             xs:"column",
             lg:"row"
         },
-        color:"white",
+        color:"black",
         padding:3,
         gap: 3,
         overflowY: "hidden",
         height: "100vh"
     }}>
-        
+        <SideBar/>
+        <Box sx={{width: "100%", overflowY: "scroll"}}>{children}</Box>
     </Box>;
 
     
