@@ -31,12 +31,39 @@ interface ContextProps {
   dispatch: React.Dispatch<any>;
 }
 
-const initialState: State = {
-  books: [],
-  readingList: [], // Ensure readingList is initialized as an empty array
-  loading: false,
-  error: null,
+const loadStateFromLocalStorage = (): State => {
+  try {
+    const serializedState = localStorage.getItem('readingListState');
+    if (serializedState === null) {
+      return {
+        books: [],
+        readingList: [],
+        loading: false,
+        error: null,
+      };
+    }
+    return JSON.parse(serializedState);
+  } catch (e) {
+    console.warn("Could not load state from local storage", e);
+    return {
+      books: [],
+      readingList: [],
+      loading: false,
+      error: null,
+    };
+  }
 };
+
+const saveStateToLocalStorage = (state: State) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('readingListState', serializedState);
+  } catch (e) {
+    console.warn("Could not save state to local storage", e);
+  }
+};
+
+const initialState: State = loadStateFromLocalStorage();
 
 const BookContext = createContext<ContextProps | undefined>(undefined);
 
@@ -51,12 +78,12 @@ const bookReducer = (state: State, action: any): State => {
     case 'ADD_TO_READING_LIST':
       return {
         ...state,
-        readingList: [...(state.readingList || []), action.payload], // Ensure readingList is iterable
+        readingList: [...(state.readingList || []), action.payload],
       };
     case 'REMOVE_FROM_READING_LIST':
       return {
         ...state,
-        readingList: (state.readingList || []).filter((book: Book) => book.title !== action.payload.title), // Ensure readingList is iterable
+        readingList: (state.readingList || []).filter((book: Book) => book.title !== action.payload.title),
       };
     default:
       return state;
@@ -80,6 +107,10 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       dispatch({ type: 'FETCH_BOOKS_REQUEST' });
     }
   }, [loading]);
+
+  useEffect(() => {
+    saveStateToLocalStorage(state);
+  }, [state]);
 
   const value = { state, dispatch };
 
