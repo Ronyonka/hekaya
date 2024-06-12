@@ -80,6 +80,7 @@ Ensure you have the following installed on your machine:
    This will start the development server and open the application in your default web browser. The application will be running at `http://localhost:3000`.
 
 4. **Mightymeld Setup**:
+
     This step is optional but necessary if you want to use mightymeld for code visualization. 
     To get started you'll need to create a mightymeld account by sighing up [here](https://mightymeld.app/signup)
     
