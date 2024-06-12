@@ -22,7 +22,7 @@ const Sidebar = () => {
     return (
       <Box
         sx={{
-          backgroundColor: "#335c6e",
+          backgroundColor: "#5acccc",
           padding: 2,
           borderRadius: 2,
           display: "flex",
@@ -59,7 +59,7 @@ const Sidebar = () => {
               component="h1"
               my={2}
               fontWeight={800}
-              fontSize={18}
+              fontSize={30}
               color="white"
             >
               Hekaya
@@ -102,8 +102,8 @@ const Sidebar = () => {
                       width: "18px",
                       filter: `${
                         pathname === item.link
-                          ? "#CFFAFA"
-                          : "#4AA088"
+                          ? "invert(77%)"
+                          : "brightness(0) saturate(100%) invert(1)"
                       }`,
                     }}
                   />
