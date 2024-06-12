@@ -112,7 +112,3 @@ This project is licensed under the MIT License.
 - [React](https://reactjs.org/)
 - [Material-UI](https://mui.com/)
 - [GraphQL](https://graphql.org/)
-
----
-
-This README provides detailed installation instructions, a project overview, and usage guidelines to help new developers understand and contribute to Hekaya. Adjust the repository URL, environment variables, and other specifics according to your actual project setup.
