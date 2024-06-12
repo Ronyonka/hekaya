@@ -4,11 +4,17 @@ import { Box, Paper, InputBase, InputAdornment, Typography } from "@mui/material
 import searchIcon from "../../components/icons/icon-search.svg"
 import BookList from "../../components/book-list";
 import NewBookList from "../../components/book-list/newBookList";
+import { useBookContext} from "../../context/book-context";
 
 
 
 const Landing = () => {
   const [search, setSearch] = useState("");
+  const { state } = useBookContext();
+  console.log(state);
+  const [searchList, setSearchList] = useState(state.books);
+  const newBooks: any = [];
+  const allBooks: any = [];
   const handleSearch = (e : {target: {value: SetStateAction<string>}}) => setSearch(e.target.value)
   return (
     <Layout>
