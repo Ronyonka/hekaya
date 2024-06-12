@@ -26,9 +26,9 @@ const NewBookCard = ({ book, index }: NewBookCardProps) => {
 
   const isBookInList = state.readingList?.some((b: Book) => b.title === book.title);
 
-  useEffect(() => {
-    console.log("Reading List:", state.readingList);
-  }, [state.readingList]);
+//   useEffect(() => {
+//     console.log("Reading List:", state.readingList);
+//   }, [state.readingList]);
 
   if (!state) {
     return <div>Loading...</div>;
@@ -53,7 +53,27 @@ const NewBookCard = ({ book, index }: NewBookCardProps) => {
         <Stack mt="6" spacing={0} position="absolute" bottom={0} left={0} right={0} p={4}>
           <Grid container alignItems="center" spacing={1}>
             <Grid item>
-              <Typography fontSize={12} color="#F76434" aria-label="Author">{book.author}</Typography>
+              <Typography fontSize={12} fontWeight={400} color="#F76434" aria-label="Author">{book.author}</Typography>
+            </Grid>
+            <Grid item>
+              <Box
+                sx={{
+                  width: "1rem",
+                  height: "1rem",
+                  bg: "#E0E0E0",
+                  borderRadius: "full",
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Typography
+                fontSize={12}
+                fontWeight={400}
+                color="#F76434"
+                aria-label="Reading Level"
+              >
+                Reading Level: {book.readingLevel}
+              </Typography>
             </Grid>
             <Grid item>
               <Typography fontSize={14} fontWeight={600} color="#F76434" aria-label="Book Title">{book.title}</Typography>

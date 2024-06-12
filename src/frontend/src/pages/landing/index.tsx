@@ -68,8 +68,9 @@ const Landing = () => {
         ) : (
           <Box width="100%">
             <Typography>
-              Found
+              Found {searchList.length} results for "{search}"{""}
             </Typography>
+            <BookList allBooks={searchList}/>
           </Box>
         )}
       </Box>

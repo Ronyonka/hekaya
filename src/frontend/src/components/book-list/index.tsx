@@ -12,11 +12,11 @@ const BookList = ({allBooks}: BookListProps) => {
 
     return ( 
         <Box sx={{ display: "flex", gap: 2, overflowX: "scroll" }}>
-            <Grid container>
+            <Grid container spacing={4}>
                 {allBooks.map((book, index) => (
                     <Grid item key={index}>
                         <Paper sx={{ backgroundColor: "transparent" }}>
-                            <BookCard book={book} />
+                            <BookCard book={book} index={index} />
                         </Paper>
                     </Grid>
                 ))}
