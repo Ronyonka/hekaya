@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Paper } from "@mui/material";
 import { Book } from "../../context/book-context";
-import NewBookCard from "../book-card/new-book";
+import BookCard from "../book-card/new-book";
 
 interface NewBookListProps {
     newBooks: Book[];
@@ -15,7 +15,7 @@ const NewBookList = ({ newBooks }: NewBookListProps) => {
                 {newBooks.map((book, index) => (
                     <Grid item key={index} sx={{ marginRight: 2 }}>
                         <Paper sx={{ backgroundColor: "transparent" }}>
-                            <NewBookCard book={book} index={index} />
+                            <BookCard book={book} index={index} />
                         </Paper>
                     </Grid>
                 ))}

@@ -49,14 +49,20 @@ const ReadingList = () => {
       </Box>
       <Box py={2} px={4}>
         {search === "" ? (
-          <Box width="100%">
             <Box width="100%">
-              <Typography variant="h5" component="h1" my={6} fontWeight={800}>
-                Your Reading List
-              </Typography>
-              <BookList allBooks={readingList} />
+                <Box width="100%">
+                    <Typography variant="h5" component="h1" my={6} fontWeight={800}>
+                    Your Reading List
+                    </Typography>
+                    {readingList.length === 0 ? (
+                    <Typography variant="body1" my={3}>
+                        Looks like your reading list is feeling a bit light! Fill it up with captivating books, and watch your literary world grow right before your eyes.
+                    </Typography>
+                    ) : (
+                    <BookList allBooks={readingList} />
+                    )}
+                </Box>
             </Box>
-          </Box>
         ) : (
           <Box width="100%">
             <Typography>
