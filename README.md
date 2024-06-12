@@ -79,6 +79,25 @@ Ensure you have the following installed on your machine:
 
    This will start the development server and open the application in your default web browser. The application will be running at `http://localhost:3000`.
 
+4. **Mightymeld Setup**:
+    This step is optional but necessary if you want to use mightymeld for code visualization. 
+    To get started you'll need to create a mightymeld account by sighing up [here](https://mightymeld.app/signup)
+    
+    Once you have an account create a `.env` file in the root directory of the frontend project (where your `package.json` lives) and the following enviroment variables:
+
+    ```bash
+    MM_INSTANCE_ID=your-instance-id
+    MM_SECRET=your-secret
+    ``` 
+    You can get a copy of the file in [the MightyMeld portal](https://mightymeld.app/instances). Create an instance called `hekaya` and download the file.
+
+    Once that is ready, in a new terminal start the mightymeld studio by running
+    ```bash
+    npx mightymeld
+    ```
+    The application will be running at `http://localhost:3001`.
+
+
 ## Usage
 
 - **Home Page**: Browse the list of available books.
