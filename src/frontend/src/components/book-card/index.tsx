@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Book, useBookContext } from "../../context/book-context";
 import { Card, CardContent, Grid, Stack, Typography, Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
+import { slugify } from "../../utils/utils";
 import BookmarkIcon from "../icons/bookmark-icon";
 import BookmarkEmptyIcon from "../icons/bookmark-empy-icon";
 
@@ -12,6 +14,7 @@ interface BookCardProps {
 }
 
 const BookCard = ({book, index}: BookCardProps) => {
+    const slugifiedTitle = slugify(book.title);
     const { state, dispatch } = useBookContext();
 
     const toggleReadingList = () => {
@@ -29,6 +32,7 @@ const BookCard = ({book, index}: BookCardProps) => {
         return <div>Loading...</div>;
       }
     return (
+        <Link to={`/book/${slugifiedTitle}`}>
         <Card
         key={index}
         elevation={0}
@@ -100,6 +104,7 @@ const BookCard = ({book, index}: BookCardProps) => {
           </Box>
         </CardContent>
       </Card>
+      </Link>
     );
 };
 
