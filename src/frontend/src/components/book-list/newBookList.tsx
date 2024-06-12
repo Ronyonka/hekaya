@@ -8,7 +8,6 @@ interface NewBookListProps {
 }
 
 const NewBookList = ({ newBooks }: NewBookListProps) => {
-    console.log("The new books are: ", newBooks);
 
     return (
         <Box sx={{ display: "flex", gap: 2, overflowX: "scroll" }}>

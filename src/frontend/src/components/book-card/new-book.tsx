@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { Book, useBookContext } from "../../context/book-context";
 import { Card, CardContent, Grid, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import BookmarkIcon from "../icons/bookmark-icon";
+import BookmarkEmptyIcon from "../icons/bookmark-empy-icon";
+
 
 interface NewBookCardProps {
   book: Book;
@@ -67,15 +70,19 @@ const NewBookCard = ({ book, index }: NewBookCardProps) => {
           padding: "16px"
         }}>
           <Box sx={{
-            p: "1rem",
-            backgroundColor: "black",
-            borderRadius: "100%",
-            cursor: "pointer",
-            "&: hover": { opacity: 0.8 }
+              p: "10px",
+              backgroundColor: "black",
+              borderRadius: "100%",
+              cursor: "pointer",
+              "&: hover": { opacity: 0.8 },
           }}
             onClick={toggleReadingList}
           >
-            {/* Add the bookmark icon here if needed */}
+            {isBookInList ? (
+              <BookmarkIcon fill="#E0E0E0"/>
+            ) : (
+              <BookmarkEmptyIcon />
+            )}
           </Box>
         </Box>
       </CardContent>
