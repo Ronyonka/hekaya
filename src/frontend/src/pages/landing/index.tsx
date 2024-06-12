@@ -11,11 +11,15 @@ import { useBookContext} from "../../context/book-context";
 const Landing = () => {
   const [search, setSearch] = useState("");
   const { state } = useBookContext();
-  console.log(state);
   const [searchList, setSearchList] = useState(state.books);
-  const newBooks: any = [];
-  const allBooks: any = [];
-  const handleSearch = (e : {target: {value: SetStateAction<string>}}) => setSearch(e.target.value)
+  const { books } = state;
+  const newBooks = books.slice(0,3);
+  const allBooks = books;
+  const handleSearch = (e : {target: {value: SetStateAction<string>}}) => {
+   setSearch(e.target.value);
+   const newList = books.filter((book) => book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+   setSearchList(newList);
+};
   return (
     <Layout>
       <Box>
@@ -49,13 +53,13 @@ const Landing = () => {
         {search === "" ? (
           <Box width="100%">
             <Box width="100%">
-              <Typography variant="h5" component="h1" my={6} fontWeight={400}>
+              <Typography variant="h5" component="h1" my={6} fontWeight={800}>
                 New Books
               </Typography>
               <NewBookList newBooks={newBooks} />
             </Box>
             <Box width="100%">
-              <Typography variant="h5" component="h1" my={6} fontWeight={400}>
+              <Typography variant="h5" component="h1" my={6} fontWeight={800}>
                 Recommended For You
               </Typography>
               <BookList allBooks={allBooks} />

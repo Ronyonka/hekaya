@@ -10,3 +10,11 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  .book-card {
+    background-color: rgba(51, 92, 110, 0.6);
+    
+    &:hover {
+      background-color: rgba(51, 92, 110, 0.2);
+    }
+  }

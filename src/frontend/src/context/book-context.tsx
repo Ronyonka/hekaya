@@ -12,7 +12,7 @@ const GET_BOOKS = gql`
   }
 `;
 
-interface Book {
+export interface Book {
   title: string;
   author: string;
   coverPhotoURL: string;
@@ -21,16 +21,19 @@ interface Book {
 
 interface State {
   books: Book[];
+  readingList: Book[];
   loading: boolean;
   error: string | null;
 }
 
 interface ContextProps {
   state: State;
+  dispatch: React.Dispatch<any>;
 }
 
 const initialState: State = {
   books: [],
+  readingList: [], // Ensure readingList is initialized as an empty array
   loading: false,
   error: null,
 };
@@ -45,6 +48,16 @@ const bookReducer = (state: State, action: any): State => {
       return { ...state, loading: false, books: action.payload };
     case 'FETCH_BOOKS_FAILURE':
       return { ...state, loading: false, error: action.payload };
+    case 'ADD_TO_READING_LIST':
+      return {
+        ...state,
+        readingList: [...(state.readingList || []), action.payload], // Ensure readingList is iterable
+      };
+    case 'REMOVE_FROM_READING_LIST':
+      return {
+        ...state,
+        readingList: (state.readingList || []).filter((book: Book) => book.title !== action.payload.title), // Ensure readingList is iterable
+      };
     default:
       return state;
   }
@@ -68,7 +81,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [loading]);
 
-  const value = { state };
+  const value = { state, dispatch };
 
   return (
     <BookContext.Provider value={value}>
