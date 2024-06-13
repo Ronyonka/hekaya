@@ -32,7 +32,7 @@ const BookCard = ({book, index}: BookCardProps) => {
         return <div>Loading...</div>;
       }
     return (
-        <Link to={`/book/${slugifiedTitle}`}>
+        
         <Card
         key={index}
         elevation={0}
@@ -46,6 +46,7 @@ const BookCard = ({book, index}: BookCardProps) => {
             display: "flex"
           }}
         >
+          <Link to={`/book/${slugifiedTitle}`}>
           <img src={process.env.PUBLIC_URL + book.coverPhotoURL} alt={book.title} style={{ width: "300px", height: "100%", borderRadius: "8px" }} />
           <Box className="book-card" position="absolute" top={0} left={0} right={0} bottom={0} borderRadius="8px" />
           <Stack mt="6" spacing={0} position="absolute" bottom={0} left={0} right={0} p={4}>
@@ -78,6 +79,7 @@ const BookCard = ({book, index}: BookCardProps) => {
               </Grid>
             </Grid>
           </Stack>
+          </Link>
           <Box sx={{
             position: "absolute",
             top: 0,
@@ -104,7 +106,7 @@ const BookCard = ({book, index}: BookCardProps) => {
           </Box>
         </CardContent>
       </Card>
-      </Link>
+
     );
 };
 

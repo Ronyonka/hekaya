@@ -37,7 +37,7 @@ const SingleBookView = ({book}: SingleBookViewProps) => {
         <Grid item xs={12} md={8}>
           <Card elevation={0} style={{ backgroundColor: "transparent", marginLeft: "20px" }}>
             <CardContent>
-              <Typography variant="h5" component="h2" gutterBottom>
+              <Typography variant="h5" component="h2" fontWeight={600} gutterBottom>
                 {book.title}
               </Typography>
               <Typography variant="subtitle1" gutterBottom>
