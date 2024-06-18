@@ -13,7 +13,6 @@ const Landing = () => {
   const { state } = useBookContext();
   const [searchList, setSearchList] = useState(state.books);
   const { books } = state;
-  const newBooks = books.slice(7,11);
   const allBooks = books;
   const handleSearch = (e : {target: {value: SetStateAction<string>}}) => {
    setSearch(e.target.value);
@@ -54,13 +53,7 @@ const Landing = () => {
           <Box width="100%">
             <Box width="100%">
               <Typography variant="h5" component="h1" my={6} fontWeight={800}>
-                New Books
-              </Typography>
-              <BookList allBooks={newBooks} />
-            </Box>
-            <Box width="100%">
-              <Typography variant="h5" component="h1" my={6} fontWeight={800}>
-                Recommended For You
+                Book Collection
               </Typography>
               <BookList allBooks={allBooks} />
             </Box>
