@@ -52,7 +52,7 @@ const BookCard = ({book, index}: BookCardProps) => {
           <Stack mt="6" spacing={0} position="absolute" bottom={0} left={0} right={0} p={4}>
             <Grid container alignItems="center" spacing={1}>
               <Grid item>
-                <Typography fontSize={12} fontWeight={400} color="#F76434" aria-label="Author">{book.author}</Typography>
+                <Typography fontSize={12} fontWeight={400} color="#fff" aria-label="Author">{book.author}</Typography>
               </Grid>
               <Grid item>
                 <Box
@@ -68,14 +68,14 @@ const BookCard = ({book, index}: BookCardProps) => {
                 <Typography
                   fontSize={12}
                   fontWeight={400}
-                  color="#F76434"
+                  color="#fff"
                   aria-label="Reading Level"
                 >
                   Reading Level: {book.readingLevel}
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography fontSize={14} fontWeight={600} color="#F76434" aria-label="Book Title">{book.title}</Typography>
+                <Typography fontSize={14} fontWeight={600} color="#fff" aria-label="Book Title">{book.title}</Typography>
               </Grid>
             </Grid>
           </Stack>

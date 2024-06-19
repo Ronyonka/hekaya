@@ -3,7 +3,6 @@ import Layout from "../../Layout";
 import { Box, Paper, InputBase, InputAdornment, Typography } from "@mui/material";
 import searchIcon from "../../components/icons/icon-search.svg"
 import BookList from "../../components/book-list";
-import NewBookList from "../../components/book-list/newBookList";
 import { useBookContext} from "../../context/book-context";
 
 
